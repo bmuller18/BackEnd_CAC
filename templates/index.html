@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="src/stylesheet.css">
+    <title>Libros</title>
 </head>
 <body>
-    <h1>Python-Flask-MySQL</h1>
+    <h1>Listado de Libros</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Genero</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if libros %}
+                {% for libro in libros %}
+                    <tr>
+                        <td>{{ libro['title'] }}</td>
+                        <td>{{ libro['author'] }}</td>
+                        <td>{{ libro['genre'] }}</td>
+                    </tr>
+                    <button>Leer</button>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">No hay libros disponibles</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
 </body>
 </html>

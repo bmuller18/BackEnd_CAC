@@ -1,42 +1,40 @@
-from flask import Flask, jsonify , request 
+from flask import Flask, jsonify, render_template
 import mysql.connector
-from flask_cors import CORS 
+from flask_cors import CORS
 from config import MYSQL_CONFIG
 
 app = Flask(__name__)
 CORS(app)
 
-def connect_to_mysql():
-    try:
-        conn = mysql.connector.connect(**MYSQL_CONFIG)
-        print ("Coneccion con exito")
-        return conn
-    except mysql.connector.Error as e:
-        print(f"Error al conectar: {e}")
-        return None
+def conectar():
+    conexion = mysql.connector.connect(**MYSQL_CONFIG)
+    return conexion
 
-@app.route('/books_bd', methods=['GET'] )
+def desconectar(conexion):
+    if conexion:
+        conexion.close()
+
+@app.route('/')
 def index():
-    conn = connect_to_mysql()
+    conn = conectar()
 
     if conn:
-        cursor = connect_to_mysql.cursor(dictionary=True)
+        cursor = conn.cursor(dictionary=True)
 
         try:
             cursor.execute("SELECT * FROM libros")
             libros = cursor.fetchall()
+            print(libros)  # Depuración: imprimir los datos obtenidos
             cursor.close()
-            return jsonify(libros)
+            desconectar(conn)
+            return render_template('index.html', libros=libros)
         except mysql.connector.Error as e:
             print(f"Error de {e}")
             cursor.close()
-            conn.close()
+            desconectar(conn)
             return jsonify({'error': 'Error de consulta'})
     else:
-        return jsonify({'error' : 'Error al conectar a la BD'})
-
-    
-    
+        return jsonify({'error': 'Error al conectar a la BD'})
 
 if __name__ == '__main__':
     app.run(debug=True)

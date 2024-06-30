@@ -4,5 +4,5 @@ MYSQL_CONFIG = {
     'user' : 'root',
     'password' : '12345',
     'host' : 'localhost',
-    'database' : 'books_bd'
+    'database' : 'books_db'
 }
