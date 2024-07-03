@@ -3,6 +3,6 @@
 MYSQL_CONFIG = {
     'user' : 'root',
     'password' : '12345',
-    'host' : 'localhost',
+    'host' : 'C:\Users\brand',
     'database' : 'books_db'
 }
