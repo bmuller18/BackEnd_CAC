@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table-sm tbody tr {
+    height: 30px; /* Ajusta la altura según tus preferencias */
+}
+
+/* Estilos para el botón */
+.btn-success {
+    margin-top: 10px; /* Ajuste para alinear mejor con el título */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px #999;
+}
+
+.button:hover {
+    color: #0069d9;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #005cbf;
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}
